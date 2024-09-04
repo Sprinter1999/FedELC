@@ -17,7 +17,7 @@ We use CIFAR-10, CIFAR-100, CIFAR-10-N, CIFAR-100-N, and one large-scale online 
 | CIFAR-100-N| 100  |   50,000   |   10,000  | Human Annotation Error  | https://github.com/UCSC-REAL/cifar-10-100n  |
 | Clothing1M|   14 | 1,000,000  |   10,000 | Systematic | https://github.com/Cysu/noisy_label  |
 
-For the last three datasets, considering relatde copyrights, please refer to the corresponding links for more details.
+For the last three datasets, considering related copyrights, please refer to the corresponding links for more details and dataset requisition.
 
 ## Usage
 > bash fedELC.sh
