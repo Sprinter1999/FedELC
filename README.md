@@ -32,7 +32,7 @@ please refer to the `./utils/options.py` for more details.
 ## Citing this work
 If you find this work useful in your research, please consider citing some helpful papers as listed below. We refer to FedNoRo (`IJCAI'23`), FedRN (`CIKM'22`), FedLSR (`CIKM'22`) and PENCIL (`ICCV'19`) to build this codebase.
 
-We also release a benchmark study entitled **FNBench**, and you can find it via [this link](https://www.techrxiv.org/users/691169/articles/1215740-fnbench-benchmarking-robust-federated-learning-against-noisy-labels). The full version of FNBench which contains 17 baselines will be open-sourced in our future work entitled FNBench, please stay tuned.
+We also release a benchmark study entitled **FNBench**, and you can find it via [this link](https://www.techrxiv.org/users/691169/articles/1215740-fnbench-benchmarking-robust-federated-learning-against-noisy-labels). The full version of FNBench which contains 17 baselines will be open-sourced in future, please stay tuned.
 
 Collaboration and pull requests are always welcome! If you have any questions or suggestions, please feel free to contact me : )
 
