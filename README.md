@@ -20,7 +20,7 @@ We use CIFAR-10, CIFAR-100, CIFAR-10-N, CIFAR-100-N, and one large-scale online 
 For the last three datasets, considering related copyrights, please refer to the corresponding links for more details and dataset requisition.
 
 ## Usage
-> bash fedELC.sh
+> bash eval_fedelc.sh
 
 please refer to the `./utils/options.py` for more details. 
 
