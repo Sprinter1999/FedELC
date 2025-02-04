@@ -615,7 +615,7 @@ class LocalUpdateFedELC(BaseLocalUpdate):
 
         
         self.index_mapper, self.index_mapper_inv = {}, {}
-        # 把整个数据集中的index映射成本地的index
+        #TODO: map global index to local index
         for i in range(len(self.idxs)):
             self.index_mapper[self.idxs[i]] = i
             self.index_mapper_inv[i] = self.idxs[i]
@@ -670,7 +670,7 @@ class LocalUpdateFedELC(BaseLocalUpdate):
         self.label_update = self.label_update - self.lamda * labels_grad
         # if self.lamda > 50:
         #     self.lamda = self.lamda - 50
-        # 预估的更新后的label
+        # 
         self.estimated_labels = F.softmax(self.label_update, dim=1)
 
 
@@ -711,7 +711,7 @@ class LocalUpdateFedELC(BaseLocalUpdate):
 
 
 
-        #TODO: 正式开始本地训练
+        #TODO: local training
         for epoch in range(self.args.local_ep):
             self.epoch = epoch
             batch_loss = []
@@ -774,7 +774,7 @@ class LocalUpdateFedELC(BaseLocalUpdate):
         #TODO: implement ELC codes
         
 
-        #TODO: 遍历一遍dataset，用遍历所得到的labels，去初始化self.label_update中对应的样本
+        #TODO: traverse and update
         before_correct_predictions = 0
         for batch_idx, batch in enumerate(self.ldr_train_infer):
 
@@ -793,7 +793,7 @@ class LocalUpdateFedELC(BaseLocalUpdate):
                 teacher_output, teacher_feat = global_net(images)
                 soft_label = torch.softmax(teacher_output, dim=1) 
                 soft_label = soft_label.to('cpu')
-            # 统计 teacher_output 和 self.true_labels_local 的准确性
+            # calculate related acc
                 predicted_classes = torch.argmax(soft_label, dim=1).to('cpu')
                 correct_predictions = (predicted_classes == self.true_labels_local[local_index]).sum().item()
                 
@@ -909,14 +909,14 @@ class LocalUpdateFedELC(BaseLocalUpdate):
   
         print(f'########[local estimate]######### For client#{self.user_idx}, we correctly estimate {percentage_correct:.2f}% local samples...')  
 
-        # 现在，准备用 self.estimated_labels 来评估estimated_labels和真实标签的准确性
+        # 
         # self.estimated_labels = F.softmax(self.label_update, dim=1)
         # self.true_labels_local = torch.index_select(
         #     self.args.True_Labels, 0, torch.tensor(self.idxs))
         # SCALE TEST: estimated torch.Size([547, 10]) ; true torch.Size([547])
 
 
-        #TODO: 遍历一遍dataset
+        #TODO: 
         after_correct_predictions = 0
         for batch_idx, batch in enumerate(self.ldr_train_infer):
 
@@ -939,7 +939,7 @@ class LocalUpdateFedELC(BaseLocalUpdate):
                 soft_label = torch.softmax(output_final, dim=1) 
                 self.final_prediction_labels[local_index]  = soft_label
 
-                # 统计 teacher_output 和 self.true_labels_local 的准确性
+                # 
                 predicted_classes = torch.argmax(soft_label, dim=1)
                 correct_predictions = (predicted_classes == self.true_labels_local[local_index]).sum().item()
                 
